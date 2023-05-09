@@ -1,0 +1,518 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #242333;
+  color: #2b2929;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center ;
+  font-family: "Lato", sans-serif;
+  margin: 0;
+}
+
+.movie-container {
+  margin: 1% ;
+}
+
+.movie-container select {
+  background-color: #fff;
+  border: 0;
+  border-radius: 5px;
+  font-size: 10px;
+  margin-left: 0px;
+  padding: 0% 1% 0% 1%;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.container {
+  perspective: 50px;
+  margin-bottom:2%;
+  margin-left: 25% ; 
+}
+
+.seat {
+    background-color: #ffffff;
+    height: 2rem;
+    width: 1rem;
+    margin: 2%;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .seat:before {
+    content: "";
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    height: 1rem;
+    width: 2rem;
+    border-radius: 6px;
+
+  }
+
+  .seat.selected:before {
+    background-color: #7ad183;
+  }
+.seat.selected {
+  background-color: #7ad183;
+}
+
+.seat.sold {
+  background-color: #787878;
+  cursor: not-allowed;
+  pointer-events: none;
+
+}
+ .seat.sold::before{
+    background-color: #787878;
+   
+ }
+
+.seat:nth-of-type(2) {
+  margin-right: 5%;
+}
+
+.seat:nth-last-of-type(2) {
+  margin-left: 5%;
+}
+
+.seat:not(.sold):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.showcase .seat:not(.sold):hover {
+  cursor: default;
+  transform: scale(1);
+}
+
+.showcase {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2% 4%;
+  border-radius: 5px;
+  color: #000000;
+  font-size: 16px;
+  list-style-type: none;
+  display: flex;
+  margin-left: 25% ; 
+  margin-right: 30% ; 
+  justify-content: space-between;
+}
+
+.showcase li {
+  display: flex;
+  align-items: right;
+  justify-content: right;
+  margin: 0 2%;
+}
+.showcase li small {
+  margin-left: 2px;
+
+}
+
+.row {
+  display: flex;
+}
+
+.screen {
+  background-color: #696969;
+  height: 11px;
+  width: 330px;
+  margin: 2%;
+  transform: rotateX(20deg);
+  box-shadow: 5px 2px rgba(64, 64, 63, 0.5);
+}
+
+
+.dialog {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255, 249, 249);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  width: 60%;
+  display: none;
+  backdrop-filter: blur(500px);
+ 
+}
+
+.dialog h2 {
+  font-size: 1.8em;
+  margin-bottom: 0px;
+}
+
+.step {
+  display: none;
+}
+
+.step.active {
+  display: block;
+}
+
+.step p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+
+}
+
+.step1-background {
+background-image: url('images/back.jpg');
+background-size: cover;
+background-size: 100% 100%;
+}
+
+button {
+  background-color: #8b8c8c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-right: 10px;
+  align-items: right;
+}
+
+button:hover {
+  background-color: #3c3d3e;
+}
+#buy-ticket {
+  background-color: #fcc404;
+  color: #0f0f0f;
+  border: none;
+  border-radius: 5px;
+  padding: 20px 30px;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-top: 40px;
+}
+
+#buy-ticket:hover {
+  background-color: #fcc204b6;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(221, 206, 206, 0.4); /* Add semi-transparent overlay */
+  z-index: 999;
+  display: none;
+}
+
+.login-box {
+  margin: 0 auto;
+  width: 400px;
+  padding: 40px;
+  background: transparent;
+  border-radius: 10px;
+}
+
+.login-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #0b0b0b;
+  text-align: center;
+}
+
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #050505;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #171616;
+  outline: none;
+  background: transparent;
+}
+.login-box .user-box label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #181717;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: white;
+  font-size: 12px;
+}
+
+.login-box form a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px;
+  align-items: right;
+}
+
+.login-box a:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap");
+
+
+.ticket {
+font-size:10px;
+width:100%;
+height: 270px;
+margin: auto;
+display: flex;
+background: white;
+box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.left {
+display: flex;
+}
+
+.image {
+height: 300px;
+width: 200px;
+background-size: 100%;
+background-repeat: no-repeat;
+background-position-y: 8%;
+opacity: 0.95;
+}
+
+.admit-one {
+position: absolute;
+color: darkgray;
+height: 250px;
+padding: 0 10px;
+letter-spacing: 0.15em;
+font-size: 12px;
+display: flex;
+text-align: center;
+justify-content: space-around;
+writing-mode: vertical-rl;
+transform: rotate(-180deg);
+}
+
+.admit-one span:nth-child(2) {
+color: white;
+font-weight: 70;
+}
+
+.left .ticket-number {
+height: 25px;
+width: 35px;
+display: flex;
+justify-content: flex-end;
+align-items: flex-end;
+padding: 1px;
+color: white;
+}
+
+.ticket-info {
+padding: 10px 20px;
+display: flex;
+flex-direction: column;
+text-align: center;
+justify-content: space-between;
+align-items: center;
+}
+
+.date {
+border-top: 1px solid gray;
+border-bottom: 1px solid gray;
+padding: 5px 0;
+font-weight: 700;
+display: flex;
+align-items: center;
+justify-content: space-around;
+}
+
+.date span:first-child {
+text-align: left;
+width: 100px;
+}
+
+.date span:last-child {
+text-align: center;
+width: 100px;
+}
+
+.date .nov-10 {
+color: #d62839;
+font-size: 16px;
+width: 150px;
+}
+
+.show-name {
+font-size: 16px;
+color: #d62839;
+font-weight: 200;
+}
+
+.show-name h1 {
+font-size: 20px;
+letter-spacing: 0.001em;
+margin-bottom: 1px;
+color: #93229f;
+font-family: "Saira Stencil One", sans-serif;
+}
+.show-name h2 {
+font-size: 17px;
+letter-spacing: 0.003em;
+margin-bottom: 1px;
+color: #d62839;
+font-family: "Saira Stencil One", sans-serif;
+}
+.time {
+color: #505050;
+text-align: center;
+display: flex;
+flex-direction: column;
+gap: 10px;
+font-weight: 900;
+}
+
+.time span {
+font-weight: 400;
+color: gray;
+}
+
+.left .time {
+font-size: 13px;
+margin-bottom: 1px;
+}
+
+.tagline {
+font-style: italic;
+font-weight: 700;
+font-size: 10px;
+}
+
+.location {
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 100%;
+padding-top: 5px;
+border-top: 1px solid gray;
+font-weight: 700;
+}
+
+.location span:first-child {
+text-align: left;
+}
+
+.location span:last-child {
+text-align: right;
+}
+
+.location .separator {
+font-size: 13px;
+}
+
+.right {
+width: 225px;
+border-left: 1px dashed #404040;
+}
+
+.right .admit-one {
+background-color: #343333;
+color: white;
+}
+
+.right .admit-one span:nth-child(2) {
+color: darkgray;
+}
+
+.right .right-info-container {
+height: 250px;
+padding:0px 0px 50px 10px;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+align-items: center;
+}
+
+.right .show-name h1 {
+margin-top: 1000px;
+font-size: 15px;
+font-family: "Barlow", sans-serif;
+color: #050505;
+}
+
+.right .time {
+margin-top: 1px;
+}
+
+.barcode {
+padding:0px 100px 150px 0px;
+height: 20px;
+width: 30px;
+}
+
+.barcode img {
+height: 50%;
+}
+
+.right .ticket-number {
+color: #505050;
+font-weight: 700;
+}
+#close-dialog {
+position: absolute;
+top: 10px;
+right: 10px;
+height: 30px;
+background-color: red;
+color: white;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+outline: none;
+}
+
+#close-dialog:hover {
+background-color: darkred;
+}
+
